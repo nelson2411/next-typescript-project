@@ -1,5 +1,5 @@
 import Table from "react-bootstrap/Table";
-import Container from "react-bootstrap/esm/Container";
+import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Image from "next/image";
 import { useFetchAllCountriesQuery } from "../../redux/features/countrySlice";
@@ -16,7 +16,9 @@ const TableContent = () => {
         striped
         bordered
         hover
-        className="shadow-lg p-3 mb-5 bg-body rounded"
+        size="sm"
+        responsive
+        className="shadow-lg p-3 mb-5 mt-5 bg-body rounded"
       >
         <thead>
           <tr>
@@ -25,6 +27,7 @@ const TableContent = () => {
             <th>Capital</th>
             <th>Region</th>
             <th>Languages</th>
+            <th>Currencies</th>
             <th>Facts</th>
           </tr>
         </thead>
@@ -50,8 +53,20 @@ const TableContent = () => {
                   ))}
               </td>
               <td>
+                {/* Display values of the currency object */}
+                {country.currencies &&
+                  Object.entries(Object.values(country.currencies)[0]).map(
+                    ([key, value]) => (
+                      <li key={key}>
+                        {key}: {value}
+                      </li>
+                    )
+                  )}
+              </td>
+              <td>
                 <ul>
-                  <li>Population: {country.population}</li>
+                  {/* display population as number */}
+                  <li>Population: {Number(country.population)}</li>
                   <li>Area: {country.area}</li>
                 </ul>
               </td>

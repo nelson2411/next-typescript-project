@@ -6,9 +6,9 @@ export type Country = {
   subregion: string;
   area: number;
   population: number;
-  currencies: Currencies[];
   // Languages is an object
   languages: ILanguages;
+  currencies: ICurrencies;
 };
 
 type Name = {
@@ -21,11 +21,14 @@ type Flags = {
   png: string;
 };
 
-type Currencies = {
-  name: string;
-  symbol: string;
-};
-
 interface ILanguages {
   [key: string]: string;
 }
+
+interface ICurrencies {
+  [key: string]: Currency;
+}
+
+type Currency = {
+  [key: string]: string;
+};
