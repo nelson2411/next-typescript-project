@@ -5,8 +5,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Badge from "react-bootstrap/Badge";
 import { GiWorld } from "react-icons/gi";
 import { FaLuggageCart } from "react-icons/fa";
-
+import { useSelector } from "react-redux";
+import { selectCart } from "../../redux/slices/cartSlice";
 const NavigationBar = () => {
+  const cart = useSelector(selectCart);
   return (
     <Navbar
       collapseOnSelect
@@ -25,7 +27,7 @@ const NavigationBar = () => {
             <Nav.Link href="#features">About this Project</Nav.Link>
             <Nav.Link href="#pricing">
               <FaLuggageCart size={30} />
-              <Badge bg="secondary">9</Badge>
+              <Badge bg="secondary">{cart.length}</Badge>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

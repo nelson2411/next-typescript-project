@@ -1,12 +1,14 @@
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
-import ListGroup from "react-bootstrap/ListGroup";
-import Image from "next/image";
 import { useFetchAllCountriesQuery } from "../../redux/features/countrySlice";
 import { Country } from "../../types/countryTypes";
-import { ListGroupItem } from "react-bootstrap";
+import styles from "../../styles/Table.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
+import { IoIosPeople } from "react-icons/io";
 
 const TableContent = () => {
+  const dispatch = useDispatch();
   const { data, error, isLoading } = useFetchAllCountriesQuery();
   console.log(data);
 
@@ -16,7 +18,6 @@ const TableContent = () => {
         striped
         bordered
         hover
-        size="sm"
         responsive
         className="shadow-lg p-3 mb-5 mt-5 bg-body rounded"
       >
@@ -29,6 +30,7 @@ const TableContent = () => {
             <th>Languages</th>
             <th>Currencies</th>
             <th>Facts</th>
+            <th className={styles.btnColumn}>Add to Cart</th>
           </tr>
         </thead>
         <tbody>
@@ -66,9 +68,19 @@ const TableContent = () => {
               <td>
                 <ul>
                   {/* display population as number */}
-                  <li>Population: {Number(country.population)}</li>
+                  <li>
+                    <IoIosPeople size={20} />: {Number(country.population)}
+                  </li>
                   <li>Area: {country.area}</li>
                 </ul>
+              </td>
+              <td className="mx-auto">
+                <button
+                  className={styles.addBtn}
+                  onClick={() => dispatch(addToCart(country))}
+                >
+                  Add to Cart
+                </button>
               </td>
             </tr>
           ))}
