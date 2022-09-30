@@ -4,10 +4,13 @@ import { useFetchAllCountriesQuery } from "../../redux/features/countrySlice";
 import { Country } from "../../types/countryTypes";
 import styles from "../../styles/Table.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../redux/slices/cartSlice";
+import { selectCart } from "../../redux/slices/cartSlice";
+import cartSlice, { addToCart } from "../../redux/slices/cartSlice";
 import { IoIosPeople } from "react-icons/io";
+import { FaRulerCombined } from "react-icons/fa";
 
 const TableContent = () => {
+  const cart = useSelector(selectCart);
   const dispatch = useDispatch();
   const { data, error, isLoading } = useFetchAllCountriesQuery();
   console.log(data);
@@ -71,13 +74,18 @@ const TableContent = () => {
                   <li>
                     <IoIosPeople size={20} />: {Number(country.population)}
                   </li>
-                  <li>Area: {country.area}</li>
+                  <li>
+                    <FaRulerCombined size={15} />: {country.area}
+                  </li>
                 </ul>
               </td>
               <td className="mx-auto">
                 <button
                   className={styles.addBtn}
                   onClick={() => dispatch(addToCart(country))}
+                  disabled={cart.some((item: Country) =>
+                    item.name.common === country.name.common ? true : false
+                  )}
                 >
                   Add to Cart
                 </button>
