@@ -16,6 +16,7 @@ const NavigationBar = () => {
       bg="dark"
       variant="dark"
       className="shadow"
+      fixed="top"
     >
       <Container>
         <Navbar.Brand href="/">

@@ -1,4 +1,28 @@
-footer {
-  background-color: black;
+.footer_text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   color: whitesmoke;
+  font-size: 1.1rem;
+}
+
+.footer_links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.footer_links > li > a {
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0 10px;
+  color: whitesmoke;
+}
+
+.footer_links > li:hover {
+  filter: brightness(110%);
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.2);
 }

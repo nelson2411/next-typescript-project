@@ -11,7 +11,8 @@ export const countryApiSlice = createApi({
       query: () => allCountriesUrl,
     }),
     fetchOneCountry: builder.query<Country, string>({
-      query: (countryName) => `${allCountriesUrl}/name/${countryName}`,
+      query: (countryName) =>
+        `https://restcountries.com/v3.1/name/${countryName}`,
     }),
   }),
 });
