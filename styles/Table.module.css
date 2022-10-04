@@ -1,6 +1,6 @@
 .container {
   margin-top: 100px;
-  height: 100%;
+  min-height: 80vh;
 }
 
 .addBtn {

@@ -1,6 +1,7 @@
 import Table from "react-bootstrap/Table";
 import Link from "next/link";
 import Container from "react-bootstrap/Container";
+import SpinnerComponent from "../spinner/Spinner";
 import { useFetchAllCountriesQuery } from "../../redux/features/countrySlice";
 import { Country } from "../../types/countryTypes";
 import styles from "../../styles/Table.module.css";
@@ -15,9 +16,10 @@ const TableContent = () => {
   const dispatch = useDispatch();
   const { data, error, isLoading } = useFetchAllCountriesQuery();
   console.log(data);
-  if (isLoading) return <div style={{ minHeight: "80vh" }}>Loading...</div>;
+
   return (
     <Container className={styles.container}>
+      {isLoading ? <SpinnerComponent /> : null}
       <Table
         striped
         bordered
