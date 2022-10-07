@@ -17,12 +17,12 @@ const Footer = () => {
         <div>
           <ul className={styles.footer_links}>
             <li>
-              <a href="#">
+              <a href="https://github.com/nelson2411">
                 <BsGithub size={30} />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/nelsonrosales24/">
                 <BsLinkedin size={30} />
               </a>
             </li>

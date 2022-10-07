@@ -52,7 +52,13 @@ const TableContent = () => {
                   />
                 </Link>
               </td>
-              <td>{country.name.common}</td>
+
+              <td>
+                <Link href={`/${country.name.common}`} passHref>
+                  <a>{country.name.common}</a>
+                </Link>
+              </td>
+
               <td>{country.capital}</td>
               <td>{country.region}</td>
 
