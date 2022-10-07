@@ -25,7 +25,7 @@ const TableContent = () => {
         bordered
         hover
         responsive
-        className="shadow-lg p-3 mb-5 bg-body rounded"
+        className="shadow p-3 mb-5 bg-body rounded"
       >
         <thead>
           <tr>

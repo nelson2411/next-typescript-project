@@ -11,6 +11,7 @@ import { selectCart } from "../../redux/slices/cartSlice";
 import { useState } from "react";
 import { Country } from "../../types/countryTypes";
 import { Button } from "react-bootstrap";
+import Link from "next/link";
 
 const NavigationBar = () => {
   const cart = useSelector(selectCart);
@@ -80,13 +81,14 @@ const NavigationBar = () => {
                       )}
                     </tbody>
                   </Table>
-
-                  <Button
-                    variant="secondary"
-                    className="w-75 my-3 mx-auto d-block"
-                  >
-                    Go to Cart
-                  </Button>
+                  <Link href="/cart">
+                    <Button
+                      variant="secondary"
+                      className="w-75 my-3 mx-auto d-block"
+                    >
+                      Go to Cart
+                    </Button>
+                  </Link>
                 </Offcanvas.Body>
               </Offcanvas>
             </Nav.Link>
