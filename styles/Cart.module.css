@@ -1,0 +1,16 @@
+.container {
+  margin-top: 100px;
+  min-height: 80vh;
+}
+
+.delete {
+  color: rgb(230, 27, 27);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.delete:hover {
+  transform: scale(1.2);
+  filter: brightness(110%);
+}

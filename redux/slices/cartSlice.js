@@ -16,14 +16,16 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       state.cart.push(action.payload);
     },
-  },
-  removeItemFromCart: (state, action) => {
-    state.cart = state.cart.filter((item) => item.name !== action.payload.name);
+    removeItemFromCart: (state, action) => {
+      state.cart = state.cart.filter(
+        (item) => item.name.common !== action.payload.name.common
+      );
+    },
   },
 });
 
 export const selectCart = (state) => state.cart.cart;
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeItemFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -30,9 +30,11 @@ const NavigationBar = () => {
       fixed="top"
     >
       <Container>
-        <Navbar.Brand href="/">
-          <GiWorld size={30} /> Countries App
-        </Navbar.Brand>
+        <Link href="/" passHref>
+          <Navbar.Brand>
+            <GiWorld size={30} /> Countries App
+          </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
@@ -83,7 +85,7 @@ const NavigationBar = () => {
                   </Table>
                   <Link href="/cart">
                     <Button
-                      variant="secondary"
+                      variant="outline-danger"
                       className="w-75 my-3 mx-auto d-block"
                     >
                       Go to Cart
