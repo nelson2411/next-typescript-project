@@ -26,7 +26,7 @@ const TableCart = () => {
             <Button variant="outline-primary">Go Back!</Button>
           </Link>
         </div>
-        <Table striped className="shadow-lg">
+        <Table striped className="shadow-lg my-5">
           <thead>
             <tr>
               <th>Flag</th>
@@ -46,7 +46,7 @@ const TableCart = () => {
             ) : null}
             {cart.map((country: Country) => (
               <tr key={country.name.common}>
-                <td>
+                <td className="p-3">
                   <img
                     src={country.flags.png}
                     alt={country.name.common}

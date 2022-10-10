@@ -14,3 +14,8 @@
   transform: scale(1.2);
   filter: brightness(110%);
 }
+
+.delete:active {
+  transform: translate(0, 0.2rem);
+  box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
+}
