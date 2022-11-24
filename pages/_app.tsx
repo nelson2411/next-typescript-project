@@ -6,7 +6,7 @@ import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-let persistor = persistStore(store);
+const persistor = persistStore(store);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

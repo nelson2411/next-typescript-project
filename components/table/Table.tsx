@@ -8,7 +8,7 @@ import { Country } from "../../types/countryTypes";
 import styles from "../../styles/Table.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCart } from "../../redux/slices/cartSlice";
-import cartSlice, { addToCart } from "../../redux/slices/cartSlice";
+import { addToCart } from "../../redux/slices/cartSlice";
 import { IoIosPeople } from "react-icons/io";
 import { FaRulerCombined } from "react-icons/fa";
 import SearchBar from "../search-field/SearchBar";
@@ -17,8 +17,7 @@ const TableContent = () => {
   const cart = useSelector(selectCart);
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = React.useState("");
-  const { data, error, isLoading } = useFetchAllCountriesQuery();
-  console.log(data);
+  const { data, isLoading } = useFetchAllCountriesQuery();
 
   const handleTermInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);

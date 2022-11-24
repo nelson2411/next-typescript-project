@@ -11,7 +11,7 @@ import { GetServerSideProps } from "next";
 import { IoIosPeople } from "react-icons/io";
 import { FaRulerCombined } from "react-icons/fa";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/slices/cartSlice";
 import styles from "../styles/CountryPage.module.css";
 

@@ -10,13 +10,11 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { FcElectronics } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { removeItemFromCart } from "../redux/slices/cartSlice";
-import { IconContext } from "react-icons";
 import Link from "next/link";
 
 const TableCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
-  console.log(cart);
 
   return (
     <Layout>
