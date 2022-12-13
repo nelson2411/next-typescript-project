@@ -37,3 +37,13 @@
 .link:hover {
   filter: brightness(120%);
 }
+
+/* responsive */
+
+@media screen and (max-width: 860px) {
+  .addBtn {
+    color: #fff;
+    background: rgb(251, 3, 3);
+    outline: none;
+  }
+}

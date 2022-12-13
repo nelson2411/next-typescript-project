@@ -1,21 +1,14 @@
 // Create a store with redux toolkit
-import { configureStore } from "@reduxjs/toolkit";
-import { countryApiSlice } from "./features/countrySlice";
-import cartReducer from "./slices/cartSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { countryApiSlice } from './features/countrySlice';
+import cartReducer from './slices/cartSlice';
 // implement redux-persist to persist the store
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-} from "redux-persist";
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 
 export const persistConfig = {
-  key: "root",
+  key: 'root',
   version: 1,
   storage,
 };

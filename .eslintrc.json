@@ -1,12 +1,18 @@
 {
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "react-hooks"],
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "parser": "typescript"
+      }
+    ],
     "spaced-comment": "off",
     "no-console": "warn",
     "consistent-return": "off",
