@@ -1,6 +1,6 @@
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import { BiSearchAlt } from "react-icons/bi";
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { BiSearchAlt } from 'react-icons/bi';
 
 type SearchBarProps = {
   onSearch: string;
@@ -10,16 +10,16 @@ type SearchBarProps = {
 const SearchBar = ({ onSearch, onTermChange }: SearchBarProps) => {
   return (
     <>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="country-search">
+      <InputGroup className='mb-3'>
+        <InputGroup.Text id='country-search'>
           <BiSearchAlt size={20} />
         </InputGroup.Text>
         <Form.Control
           onChange={onTermChange}
           value={onSearch}
-          placeholder="Search by country name"
-          aria-label="country"
-          aria-describedby="country-search"
+          placeholder='Search by country name'
+          aria-label='country'
+          aria-describedby='country-search'
         />
       </InputGroup>
     </>

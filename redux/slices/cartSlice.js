@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Country } from "../../types/countryTypes";
+import { createSlice } from '@reduxjs/toolkit';
+import { Country } from '../../types/countryTypes';
 
 // Create a slice of the store
 // add to cart, remove from cart, clear cart
@@ -10,16 +10,14 @@ const initialState = {
 };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     addToCart: (state, action) => {
       state.cart.push(action.payload);
     },
     removeItemFromCart: (state, action) => {
-      state.cart = state.cart.filter(
-        (item) => item.name.common !== action.payload.name.common
-      );
+      state.cart = state.cart.filter((item) => item.name.common !== action.payload.name.common);
     },
   },
 });

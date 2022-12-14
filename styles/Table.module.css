@@ -26,6 +26,10 @@
   box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
 }
 
+.addBtnIcon {
+  display: none;
+}
+
 .btnColumn {
   width: 160px;
 }
@@ -45,5 +49,11 @@
     color: #fff;
     background: rgb(251, 3, 3);
     outline: none;
+  }
+  .addBtnIcon {
+    display: inline;
+  }
+  .addBtnText {
+    display: none;
   }
 }

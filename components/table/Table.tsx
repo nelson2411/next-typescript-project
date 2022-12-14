@@ -1,22 +1,23 @@
-import React from "react";
-import Table from "react-bootstrap/Table";
-import Link from "next/link";
-import Container from "react-bootstrap/Container";
-import SpinnerComponent from "../spinner/Spinner";
-import { useFetchAllCountriesQuery } from "../../redux/features/countrySlice";
-import { Country } from "../../types/countryTypes";
-import styles from "../../styles/Table.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCart } from "../../redux/slices/cartSlice";
-import { addToCart } from "../../redux/slices/cartSlice";
-import { IoIosPeople } from "react-icons/io";
-import { FaRulerCombined } from "react-icons/fa";
-import SearchBar from "../search-field/SearchBar";
+import React from 'react';
+import Table from 'react-bootstrap/Table';
+import Link from 'next/link';
+import Container from 'react-bootstrap/Container';
+import SpinnerComponent from '../spinner/Spinner';
+import { useFetchAllCountriesQuery } from '../../redux/features/countrySlice';
+import { Country } from '../../types/countryTypes';
+import styles from '../../styles/Table.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCart } from '../../redux/slices/cartSlice';
+import { addToCart } from '../../redux/slices/cartSlice';
+import { IoIosPeople } from 'react-icons/io';
+import { FaRulerCombined } from 'react-icons/fa';
+import SearchBar from '../search-field/SearchBar';
+import { BsFillBookmarkHeartFill } from 'react-icons/bs';
 
 const TableContent = () => {
   const cart = useSelector(selectCart);
   const dispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchTerm, setSearchTerm] = React.useState('');
   const { data, isLoading } = useFetchAllCountriesQuery();
 
   const handleTermInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,13 +28,7 @@ const TableContent = () => {
     <Container className={styles.container}>
       <SearchBar onSearch={searchTerm} onTermChange={handleTermInput} />
       {isLoading ? <SpinnerComponent /> : null}
-      <Table
-        striped
-        bordered
-        hover
-        responsive
-        className="shadow p-3 mb-5 bg-body rounded"
-      >
+      <Table striped bordered hover responsive className='shadow p-3 mb-5 bg-body rounded'>
         <thead>
           <tr>
             <th>Flag</th>
@@ -47,9 +42,7 @@ const TableContent = () => {
         </thead>
         <tbody>
           {data
-            ?.filter((country: Country) =>
-              country?.name.common.toLowerCase().includes(searchTerm)
-            )
+            ?.filter((country: Country) => country?.name.common.toLowerCase().includes(searchTerm))
             .map((country: Country) => (
               <tr key={country.name.common}>
                 <td>
@@ -77,24 +70,25 @@ const TableContent = () => {
                   <ul>
                     {/* display population as number */}
                     <li>
-                      <IoIosPeople size={20} />:{" "}
-                      {Number(country.population).toLocaleString()}
+                      <IoIosPeople size={20} />: {Number(country.population).toLocaleString()}
                     </li>
                     <li>
-                      <FaRulerCombined size={15} />:{" "}
-                      {Number(country.area).toLocaleString()} km²
+                      <FaRulerCombined size={15} />: {Number(country.area).toLocaleString()} km²
                     </li>
                   </ul>
                 </td>
-                <td className="mx-auto">
+                <td className='mx-auto'>
                   <button
                     className={styles.addBtn}
                     onClick={() => dispatch(addToCart(country))}
                     disabled={cart.some((item: Country) =>
-                      item.name.common === country.name.common ? true : false
+                      item.name.common === country.name.common ? true : false,
                     )}
                   >
-                    Add to Cart
+                    <span className={styles.addBtnText}>Add to Cart</span>
+                    <span className={styles.addBtnIcon}>
+                      <BsFillBookmarkHeartFill size={20} />
+                    </span>
                   </button>
                 </td>
               </tr>

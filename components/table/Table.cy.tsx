@@ -1,7 +1,7 @@
-import Table from "./Table";
+import Table from './Table';
 
-describe("It should mount the table", () => {
-  it("should mount the component", () => {
+describe('It should mount the table', () => {
+  it('should mount the component', () => {
     cy.mount(<Table />);
   });
 });

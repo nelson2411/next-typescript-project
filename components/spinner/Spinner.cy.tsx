@@ -1,7 +1,7 @@
-import Spinner from "./Spinner";
+import Spinner from './Spinner';
 
-describe("Spinner", () => {
-  it("should mount the component", () => {
+describe('Spinner', () => {
+  it('should mount the component', () => {
     cy.mount(<Spinner />);
   });
 });
