@@ -26,6 +26,7 @@
     "@types/node": "18.7.23",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
+    "@types/testing-library__react": "^10.2.0",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "babel-eslint": "^10.1.0",
     "cypress": "^11.2.0",
