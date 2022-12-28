@@ -36,6 +36,8 @@
 
 .link {
   cursor: pointer;
+  text-decoration: none;
+  color: rgb(11, 11, 176);
 }
 
 .link:hover {

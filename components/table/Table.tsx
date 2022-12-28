@@ -1,4 +1,5 @@
 import React from 'react';
+import { useCallback } from 'react';
 import Table from 'react-bootstrap/Table';
 import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
@@ -18,7 +19,12 @@ const TableContent = () => {
   const cart = useSelector(selectCart);
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = React.useState('');
-  const { data, isLoading } = useFetchAllCountriesQuery();
+
+  // Use usecallback to cache the fetch from redux
+
+  const memoizedFetch = useCallback(useFetchAllCountriesQuery, []);
+
+  const { data, isLoading } = memoizedFetch();
 
   const handleTermInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -59,7 +65,7 @@ const TableContent = () => {
 
                 <td>
                   <Link href={`/${country.name.common}`} passHref>
-                    <a>{country.name.common}</a>
+                    <a className={styles.link}>{country.name.common}</a>
                   </Link>
                 </td>
 
