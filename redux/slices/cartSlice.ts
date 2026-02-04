@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Country, CartState } from '../../types/countryTypes';
+import type { Country } from '../../types/countryTypes';
+import { CartState } from '../../types/countryTypes';
 
 // Create a slice of the store
 // add to cart, remove from cart, clear cart
