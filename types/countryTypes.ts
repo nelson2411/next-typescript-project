@@ -1,34 +1,22 @@
 export type Country = {
-  name: Name;
-  flags: Flags;
-  capital: string;
+  cca2: string;
+  name: {
+    common: string;
+    official: string;
+  };
+  capital?: string[]; // Capital can be optional because countries like Antarctica or Western Sahara may not have a defined capital
   region: string;
-  subregion: string;
-  area: number;
+  subregion?: string;
   population: number;
-  // Languages is an object
-  languages: ILanguages;
-  currencies: ICurrencies;
+  area: number;
+  flags: {
+    png: string;
+    svg: string;
+  };
+  languages?: { [key: string]: string }; // Languages can be optional
+  currencies?: { [key: string]: { name: string; symbol: string } }; // Currencies can be optional
 };
 
-type Name = {
-  common: string;
-  official: string;
-};
-
-type Flags = {
-  svg: string;
-  png: string;
-};
-
-interface ILanguages {
-  [key: string]: string;
+export interface CartState {
+  cart: Country[];
 }
-
-interface ICurrencies {
-  [key: string]: Currency;
-}
-
-type Currency = {
-  [key: string]: string;
-};

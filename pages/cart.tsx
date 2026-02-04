@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { FcElectronics } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
-import { removeItemFromCart } from '../redux/slices/cartSlice';
+import { removeFromCart } from '../redux/slices/cartSlice';
 import Link from 'next/link';
 
 const TableCart = () => {
@@ -56,7 +56,7 @@ const TableCart = () => {
                   <button className={styles.delete}>
                     <AiTwotoneDelete
                       size={25}
-                      onClick={() => dispatch(removeItemFromCart(country))}
+                      onClick={() => dispatch(removeFromCart(country.cca2))}
                     />
                   </button>
                 </td>

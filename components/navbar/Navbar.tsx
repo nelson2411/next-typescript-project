@@ -54,7 +54,7 @@ const NavigationBar = () => {
                         <p>No countries added to cart yet!</p>
                       ) : (
                         cart.map((country: Country) => (
-                          <tr key={country.name.common}>
+                          <tr key={country.cca2}>
                             <td>
                               <img
                                 src={country.flags?.png}

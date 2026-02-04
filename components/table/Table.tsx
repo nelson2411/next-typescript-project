@@ -20,15 +20,15 @@ const TableContent = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = React.useState('');
 
-  // Use usecallback to cache the fetch from redux
-
-  const memoizedFetch = useCallback(useFetchAllCountriesQuery, []);
-
-  const { data, isLoading } = memoizedFetch();
+  const { data, isLoading } = useFetchAllCountriesQuery();
 
   const handleTermInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
+
+  console.log('Cart from TableContent:', cart);
+  console.log(data?.length);
+  console.log(cart.length);
 
   return (
     <Container className={styles.container}>
@@ -48,9 +48,11 @@ const TableContent = () => {
         </thead>
         <tbody>
           {data
-            ?.filter((country: Country) => country?.name.common.toLowerCase().includes(searchTerm))
+            ?.filter((country: Country) =>
+              country?.name.common.toLowerCase().includes(searchTerm.toLowerCase()),
+            )
             .map((country: Country) => (
-              <tr key={country.name.common}>
+              <tr key={country.cca2 ?? country.name.common}>
                 <td>
                   <Link href={`/${country.name.common}`}>
                     <img
@@ -69,7 +71,7 @@ const TableContent = () => {
                   </Link>
                 </td>
 
-                <td>{country.capital}</td>
+                <>{country.capital?.[0] ?? '-'}</>
                 <td>{country.region}</td>
 
                 <td>
@@ -84,13 +86,7 @@ const TableContent = () => {
                   </ul>
                 </td>
                 <td className='mx-auto'>
-                  <button
-                    className={styles.addBtn}
-                    onClick={() => dispatch(addToCart(country))}
-                    disabled={cart.some((item: Country) =>
-                      item.name.common === country.name.common ? true : false,
-                    )}
-                  >
+                  <button className={styles.addBtn} onClick={() => dispatch(addToCart(country))}>
                     <span className={styles.addBtnText}>Add to Cart</span>
                     <span className={styles.addBtnIcon}>
                       <BsFillBookmarkHeartFill size={20} />
