@@ -19,5 +19,5 @@ export type Country = {
 
 export interface CartState {
   cart: Country[];
-  lastAction?: 'added' | 'duplicated';
+  lastAction?: 'added' | 'duplicated' | 'undefined';
 }

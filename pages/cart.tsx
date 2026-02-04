@@ -1,5 +1,11 @@
 import { useSelector } from 'react-redux';
-import { clearLastAction, selectLastcartAction } from '../redux/slices/cartSlice';
+import {
+  clearLastAction,
+  selectCart,
+  selectLastcartAction,
+  removeItemFromCart,
+} from '../redux/slices/cartSlice';
+
 import { Country } from '../types/countryTypes';
 import styles from '../styles/Cart.module.css';
 import Table from 'react-bootstrap/Table';
@@ -14,7 +20,7 @@ import Link from 'next/link';
 
 const TableCart = () => {
   const dispatch = useDispatch();
-  const cart = useSelector(selectLastcartAction);
+  const cart = useSelector(selectCart);
 
   return (
     <Layout>
@@ -43,7 +49,7 @@ const TableCart = () => {
               </h3>
             ) : null}
             {cart.map((country: Country) => (
-              <tr key={country.name.common}>
+              <tr key={country.cca2}>
                 <td className='p-3'>
                   <img src={country.flags?.png} alt={country.name.common} width={80} height={50} />
                 </td>
@@ -56,9 +62,7 @@ const TableCart = () => {
                   <button className={styles.delete}>
                     <AiTwotoneDelete
                       size={25}
-                      onClick={() =>
-                        dispatch({ type: 'cart/removeFromCart', payload: country.cca2 })
-                      }
+                      onClick={() => dispatch(removeItemFromCart(country.cca2))}
                     />
                   </button>
                 </td>
