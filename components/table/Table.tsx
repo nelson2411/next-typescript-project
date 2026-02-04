@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCallback } from 'react';
 import Table from 'react-bootstrap/Table';
+import Alert from 'react-bootstrap/Alert';
 import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
 import SpinnerComponent from '../spinner/Spinner';
@@ -8,15 +9,17 @@ import { useFetchAllCountriesQuery } from '../../redux/features/countrySlice';
 import { Country } from '../../types/countryTypes';
 import styles from '../../styles/Table.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCart } from '../../redux/slices/cartSlice';
+import { selectLastcartAction, clearLastAction } from '../../redux/slices/cartSlice';
 import { addToCart } from '../../redux/slices/cartSlice';
 import { IoIosPeople } from 'react-icons/io';
 import { FaRulerCombined } from 'react-icons/fa';
 import SearchBar from '../search-field/SearchBar';
 import { BsFillBookmarkHeartFill } from 'react-icons/bs';
+import cart from 'pages/cart';
+import { last } from 'cypress/types/lodash';
 
 const TableContent = () => {
-  const cart = useSelector(selectCart);
+  const lastAction = useSelector(selectLastcartAction);
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = React.useState('');
 
@@ -34,6 +37,27 @@ const TableContent = () => {
     <Container className={styles.container}>
       <SearchBar onSearch={searchTerm} onTermChange={handleTermInput} />
       {isLoading ? <SpinnerComponent /> : null}
+      {lastAction === 'duplicated' && (
+        <Alert
+          variant='warning'
+          dismissible
+          onClose={() => dispatch(clearLastAction())}
+          className='mt-3'
+        >
+          <strong>⚠️ This country is already in your cart!</strong>
+        </Alert>
+      )}
+      {lastAction === 'added' && (
+        <Alert
+          variant='success'
+          dismissible
+          onClose={() => dispatch(clearLastAction())}
+          className='mt-3'
+        >
+          <strong>✅ Country added to your cart!</strong>
+        </Alert>
+      )}
+
       <Table striped bordered hover responsive className='shadow p-3 mb-5 bg-body rounded'>
         <thead>
           <tr>

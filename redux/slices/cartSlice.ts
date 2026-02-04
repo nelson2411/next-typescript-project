@@ -11,22 +11,25 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<Country>) => {
+      if (!action.payload.cca2) return;
       const exists = state.cart.some((item) => item.cca2 === action.payload.cca2);
-      if (!exists) {
-        state.cart.push(action.payload);
+      if (exists) {
+        state.lastAction = 'duplicated';
+        return;
       }
+
+      state.cart.push(action.payload);
+      state.lastAction = 'added';
     },
-    removeFromCart: (state, action: PayloadAction<string>) => {
-      state.cart = state.cart.filter((item) => item.cca2 !== action.payload);
-    },
-    clearCart: (state) => {
-      state.cart = [];
+    clearLastAction: (state) => {
+      state.lastAction = undefined;
     },
   },
 });
 
-export const selectCart = (state: { cart: CartState }) => state.cart.cart;
+export const selectCart = (state: any) => state.cart.cart;
+export const selectLastcartAction = (state: any) => state.cart.lastAction;
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, clearLastAction } = cartSlice.actions;
 
 export default cartSlice.reducer;

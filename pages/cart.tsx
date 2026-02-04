@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectCart } from '../redux/slices/cartSlice';
+import { clearLastAction, selectLastcartAction } from '../redux/slices/cartSlice';
 import { Country } from '../types/countryTypes';
 import styles from '../styles/Cart.module.css';
 import Table from 'react-bootstrap/Table';
@@ -9,12 +9,12 @@ import Button from 'react-bootstrap/Button';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { FcElectronics } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../redux/slices/cartSlice';
+import {} from '../redux/slices/cartSlice';
 import Link from 'next/link';
 
 const TableCart = () => {
   const dispatch = useDispatch();
-  const cart = useSelector(selectCart);
+  const cart = useSelector(selectLastcartAction);
 
   return (
     <Layout>
@@ -56,7 +56,9 @@ const TableCart = () => {
                   <button className={styles.delete}>
                     <AiTwotoneDelete
                       size={25}
-                      onClick={() => dispatch(removeFromCart(country.cca2))}
+                      onClick={() =>
+                        dispatch({ type: 'cart/removeFromCart', payload: country.cca2 })
+                      }
                     />
                   </button>
                 </td>
